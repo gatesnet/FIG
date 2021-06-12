@@ -1,38 +1,37 @@
-version: 2
+version: 2.1
 jobs:
   build:
-    working_directory: ~/repo
+    working_directory: ~/figapi
     docker:
       - image: circleci/node:14.7.0
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - $AZURE_VM_SSH_FINGERPRINT
       - run:
-          name: Copy updated files to VM
-          command: scp -o StrictHostKeyChecking=no -r ./* $AZURE_VM_USER@$AZURE_VM_DNS:~/figapi
-
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{checksum "package-lock.json"}}
+      - run:
+          name: install-npm
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{checksum "package-lock.json"}}
+          paths:
+            - ./node_modules
   deploy:
-    machine:
-      enabled: true
+    docker:
+      - image: circleci/node:14.7.0    
     steps:
+      - checkout
       - run:
-          name: Deploy Over SSH
-          command: |
-            ssh $AZURE_VM_USER@$AZURE_VM_DNS "cd figapi && sudo npm run-script stop && sudo npm install && sudo npm start"
+          name: Deploy over SSH
+          command: ssh $AZURE_VM_USER@$AZURE_VM_DNS "cd figapi && sudo npm run-script stop && sudo npm install && sudo npm start"
 
 workflows:
   version: 2
-  build:
+  build-master:
     jobs:
       - build:
-        filters:
-          branches:
-            only: main
-      - deploy:
-          requires:
-            - build
           filters:
             branches:
-              only: main
+              only: master
