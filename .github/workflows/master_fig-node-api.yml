@@ -34,6 +34,6 @@ jobs:
       with:
         app-name: fig-node-api
         slot-name: Production
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_064EE3CB6F154B5EB94281D5FFAD5457 }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_366505A03F3D4300B62D3D4301C9F2DC }}
         package: .
 
