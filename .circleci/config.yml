@@ -1,14 +1,13 @@
 version: 2.1
 jobs:
   build:
-    working_directory: ~/figapi
     docker:
       - image: circleci/node:14.7.0
     steps:
       - checkout
       - run:
           name: update-npm
-          command: 'sudo npm install -g npm@latest'
+          command: 'npm install --save'
       - restore_cache:
           key: dependency-cache-{{checksum "package-lock.json"}}
       - run:
@@ -35,3 +34,6 @@ workflows:
           filters:
             branches:
               only: master
+      - deploy:
+         requires:
+          - hold
