@@ -15,7 +15,7 @@ variables:
   webAppName: 'figapi'
 
   # Environment name
-  environmentName: ''
+  environmentName: 'Satge'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
