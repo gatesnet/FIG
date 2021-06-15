@@ -77,3 +77,6 @@ app.listen(PORT, () => {
   const message = `Server running on port: ${PORT} Started at: ${datetime}`;
   console.log(message);
 });
+
+// Export module to let Mocha app.address to be readable from test files
+module.exports = app;

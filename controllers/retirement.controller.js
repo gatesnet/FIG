@@ -16,7 +16,7 @@ exports.getCountries = async function (req, res) {
         (err, result) => {
           if (err) {
             console.log(err);
-            return res.status(400).send({ message: 'Bad Reuquest' });
+            return res.status(400).send({ error: 'Bad Reuquest' });
           }
           return res.status(200).send({ message: result.recordset });
         },
@@ -59,7 +59,7 @@ exports.getFutureExpenses = async function (req, res) {
         (err, result) => {
           if (err) {
             console.log(err);
-            return res.status(400).send({ message: 'Bad Reuquest' });
+            return res.status(400).send({ error: 'Bad Reuquest' });
           }
           const inflationRate = result.recordset[0].inflation_rate;
 

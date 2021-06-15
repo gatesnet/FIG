@@ -16,7 +16,7 @@ exports.register = (req, res) => {
     const schema = Joi.object({
       firstname: Joi.string().min(3).required(),
       lastname: Joi.string().min(3).required(),
-      username: Joi.string().email().required(),
+      email: Joi.string().email().required(),
       password: Joi.string().min(8).required(),
     });
 
@@ -31,24 +31,22 @@ exports.register = (req, res) => {
 
     const { firstname } = req.body;
     const { lastname } = req.body;
-    const { username } = req.body;
+    const { email } = req.body;
     const { password } = req.body;
 
     bcrypt.hash(password, saltRounds, async function (err, hash) {
       const pool = await poolPromise;
       await pool.request().query(
-        `INSERT INTO TblUsers (User_id,User_first_name, User_last_name, User_name, User_password, User_Type) VALUES (101,'${firstname}', '${lastname}', '${username}', '${hash}', 'API_Role')`,
+        `INSERT INTO TblUserAPI (user_first_name, user_last_name, user_email, user_password, user_type) VALUES ('${firstname}', '${lastname}', '${email}', '${hash}', 'API_Role')`,
 
         function (err) {
           if (err) {
             console.log(err);
-            return res.status(400).send({ message: 'Bad Reuquest' });
-            // eslint-disable-next-line no-else-return
-          } else {
-            return res
-              .status(400)
-              .send({ message: 'User registered sucessfully' });
+            return res.status(400).send({ error: 'Bad Reuquest' });
           }
+          return res
+            .status(201)
+            .send({ message: 'User registered sucessfully' });
         },
       );
     });
@@ -62,7 +60,7 @@ exports.login = async function (req, res) {
   try {
     // Validation
     const schema = Joi.object({
-      username: Joi.string().email().required(),
+      email: Joi.string().email().required(),
       password: Joi.string().min(8).required(),
     });
 
@@ -72,38 +70,39 @@ exports.login = async function (req, res) {
       return;
     }
 
-    const { username } = req.body;
+    const { email } = req.body;
     const { password } = req.body;
 
     const pool = await poolPromise;
     await pool
       .request()
       .query(
-        `SELECT User_password from TblUsers where User_name='${username}'`,
+        `SELECT user_password from TblUserAPI where user_email='${email}'`,
         function (err, result) {
           if (err) {
             console.log(err);
-            return res.status(400).send({ message: 'Bad Reuquest' });
+            return res.status(400).send({ error: 'Bad Reuquest' });
           }
-          if (Object.keys(result.recordset).length === 0) {
-            return res.status(400).send({ message: 'Invalid username' });
+          if (result.recordset.length === 0) {
+            return res.status(400).send({ error: 'Invalid email' });
           }
-          const dbPassword = result.recordset[0].User_password;
+          const dbPassword = result.recordset[0].user_password;
+
           bcrypt.compare(password, dbPassword, function (error, result) {
             if (error) {
               console.log(error);
-              return res.status(400).send({ message: 'Bad Reuquest' });
+              return res.status(400).send({ error: 'Bad Reuquest' });
             }
             if (!error) {
               if (!result) {
-                return res.status(400).send({ message: 'Invalid password' });
+                return res.status(400).send({ error: 'Invalid password' });
               }
             }
             if (result) {
               try {
                 const token = jwt.sign(
                   {
-                    username,
+                    email,
                     expire: Date.now() + 1000 * 60 * 60, // 1 hour
                   },
                   process.env.JWT_SECRET,
@@ -111,10 +110,98 @@ exports.login = async function (req, res) {
                 return res.status(200).send({ token });
               } catch (error) {
                 console.log(error);
-                return res.status(500).send({ message: 'token sign error' });
+                return res.status(500).send({ error: 'token sign error' });
               }
             }
           });
+        },
+      );
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+};
+
+// Get users
+exports.getUsers = async function (req, res) {
+  try {
+    const pool = await poolPromise;
+    await pool
+      .request()
+      .query(
+        'SELECT user_id,user_first_name,user_last_name,user_email from TblUserAPI',
+        (err, result) => {
+          if (err) {
+            console.log(err);
+            return res.status(400).send({ error: 'Bad Reuquest' });
+          }
+          return res.status(200).send({ message: result.recordset });
+        },
+      );
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+};
+
+// Get users ID by Email
+exports.getUserIDByEmail = async function (req, res) {
+  try {
+    // Validation
+    const schema = Joi.object({
+      email: Joi.string().email().required(),
+    });
+    const results = schema.validate(req.params);
+    if (results.error) {
+      res.status(400).send(results.error.details[0].message);
+      return;
+    }
+    const { email } = req.params;
+    const pool = await poolPromise;
+    await pool
+      .request()
+      .query(
+        `SELECT user_id from TblUserAPI where user_email='${email}'`,
+        (err, result) => {
+          if (err) {
+            console.log(err);
+            return res.status(400).send({ error: 'Bad Reuquest' });
+          } if (result.recordset.length === 0) {
+            return res.status(400).send({ error: 'Invalid email' });
+          }
+          return res.status(200).send({ message: result.recordset });
+        },
+      );
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+};
+
+// Delete User
+exports.deleteuser = async function (req, res) {
+  try {
+    // Validation
+    const schema = Joi.object({
+      id: Joi.number().integer().min(1).required(),
+    });
+
+    const results = schema.validate(req.params);
+    if (results.error) {
+      res.status(400).send(results.error.details[0].message);
+      return;
+    }
+
+    const { id } = req.params;
+
+    const pool = await poolPromise;
+    await pool
+      .request()
+      .query(
+        `DELETE from TblUserAPI where user_id = '${id}'`,
+        (err) => {
+          if (err) {
+            console.log(err);
+            return res.status(400).send({ error: 'Bad Reuquest' });
+          }
+          return res.status(200).send({ message: `User with ID ${id} has been successfully deleted` });
         },
       );
   } catch (err) {
