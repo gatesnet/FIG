@@ -100,6 +100,17 @@ const retirementHealthExpensesRoute = require('./routes/retirement.healthexpense
 
 app.use('/api/retirement', retirementHealthExpensesRoute);
 
+// Routes to Retirement Vacation Holiday Expenses
+const retirementVacationHolidayExpensesRoute = require('./routes/retirement.vacationholidayexpenses.route');
+
+app.use('/api/retirement', retirementVacationHolidayExpensesRoute);
+
+// Routes to Retirement Loan Expenses
+const retirementLoanExpensesRoute = require('./routes/retirement.loanexpenses.route');
+
+app.use('/api/retirement', retirementLoanExpensesRoute);
+
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
