@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha ./test/*.js",
     "stop": "pm2 kill",
-    "start": "pm2 start server.js"
+    "start": "nodemon server.js"
   },
   "author": "Saleh Aqrabawi",
   "license": "ISC",

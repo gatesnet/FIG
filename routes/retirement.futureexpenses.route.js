@@ -1,6 +1,6 @@
 const express = require('express');
 
-const retirementController = require('../controllers/retirement.controller');
+const retirementFutureExpensesController = require('../controllers/retirement.futureexpenses.controller');
 const checkAuthMiddleware = require('../middleware/check-auth');
 
 const router = express.Router();
@@ -42,7 +42,7 @@ const router = express.Router();
 router.get(
   '/getcountries',
   checkAuthMiddleware.checkAuth,
-  retirementController.getCountries,
+  retirementFutureExpensesController.getCountries,
 );
 
 /**
@@ -104,7 +104,7 @@ router.get(
 router.get(
   '/getfutureexpenses/:age/:expenses/:livein',
   checkAuthMiddleware.checkAuth,
-  retirementController.getFutureExpenses,
+  retirementFutureExpensesController.getFutureExpenses,
 );
 
 module.exports = router;

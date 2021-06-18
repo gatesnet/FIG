@@ -60,15 +60,45 @@ app.get('/', (req, res) => {
   res.send('Welcome to FIG API Webservices!');
 });
 
-// Routes to Users model
+// Routes to Users
 const userRoute = require('./routes/user.route');
 
 app.use('/api/user', userRoute);
 
-// Routes to Retirement model
-const retirementRoute = require('./routes/retirement.route');
+// Routes to Retirement Future Expenses
+const retirementFutureExpensesRoute = require('./routes/retirement.futureexpenses.route');
 
-app.use('/api/retirement', retirementRoute);
+app.use('/api/retirement', retirementFutureExpensesRoute);
+
+// Routes to Retirement Home Expenses
+const retirementHomeExpensesRoute = require('./routes/retirement.homeexpenses.route');
+
+app.use('/api/retirement', retirementHomeExpensesRoute);
+
+// Routes to Retirement Education Expenses
+const retirementEducationExpensesRoute = require('./routes/retirement.educationexpenses.route');
+
+app.use('/api/retirement', retirementEducationExpensesRoute);
+
+// Routes to Retirement Transportation Expenses
+const retirementTransportationExpensesRoute = require('./routes/retirement.transportationexpenses.route');
+
+app.use('/api/retirement', retirementTransportationExpensesRoute);
+
+// Routes to Retirement Dailly Living Expenses
+const retirementDailyLivingExpensesRoute = require('./routes/retirement.dailylivingexpenses.route');
+
+app.use('/api/retirement', retirementDailyLivingExpensesRoute);
+
+// Routes to Retirement Entertainment Expenses
+const retirementEntertainmentExpensesRoute = require('./routes/retirement.entertainmentexpenses.route');
+
+app.use('/api/retirement', retirementEntertainmentExpensesRoute);
+
+// Routes to Retirement Health Expenses
+const retirementHealthExpensesRoute = require('./routes/retirement.healthexpenses.route');
+
+app.use('/api/retirement', retirementHealthExpensesRoute);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
