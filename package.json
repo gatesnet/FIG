@@ -6,8 +6,9 @@
   "scripts": {
     "test": "mocha ./test/*.js",
     "stop": "pm2 kill",
-    "start": "pm2 start server.js",
-    "start2": "nodemon server.js"
+    "local": "NODE_ENV=localhost nodemon server.js",
+    "dev": "NODE_ENV=development pm2 start server.js",
+    "prod": "NODE_ENV=production pm2 start server.js"
   },
   "author": "Saleh Aqrabawi",
   "license": "ISC",

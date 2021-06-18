@@ -10,6 +10,19 @@ const compression = require('compression');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
+const env = (process.env.NODE_ENV) ? process.env.NODE_ENV : 'development';
+let url;
+
+if (env === 'localhost') {
+  url = 'http://localhost:3000/api';
+}
+if (env === 'production') {
+  url = 'http://api.figinvestment.com/api';
+}
+if (env === 'development') {
+  url = 'http://apistg.figinvestment.com/api';
+}
+
 app.use(bodyParser.json());
 
 app.use(cors());
@@ -26,19 +39,9 @@ const options = {
       description: '<div><p>This page describes the methods allowed by this web service.</p><p>You must read the paragraph below before use it !<br><br>You must first retrieve an acces token using the "login" call (fill with your username and password)</b> and after you will be able to use other service calls.</p></div>',
       version: '1.0.0',
     },
-    basebath: 'http://localhost:3000/api',
     servers: [
       {
-        url: 'http://localhost:3000/api',
-        description: 'Localhost server (uses test data)',
-      },
-      {
-        url: 'http://apistg.figinvestment.com/api',
-        description: 'Sandbox server (uses test data)',
-      },
-      {
-        url: 'http://api.figinvestment.com/api',
-        description: 'Production server (uses live data)',
+        url,
       },
     ],
     components: {
