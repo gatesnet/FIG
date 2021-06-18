@@ -8,7 +8,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/retirement/getvacationholidayexpenses/{airfare}/{accommodations}/{food}/{souvenirs}/{rentalCar}/{other}:
+ * /retirement/getvacationholidayexpenses/{airfare}/{accommodations}/{food}/{souvenirs}/{rentalCar}/{other}:
  *    get:
  *      description: Used to get Vacation Holiday Expenses
  *      summary: Get Vacation Holiday Expenses

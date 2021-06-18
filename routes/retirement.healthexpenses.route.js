@@ -8,7 +8,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/retirement/gethealthexpenses/{healthInsurance}/{gymMembership}/{doctorDentistVisits}/{medicinePrescriptions}/{veterinarian}/{lifeInsurance}:
+ * /retirement/gethealthexpenses/{healthInsurance}/{gymMembership}/{doctorDentistVisits}/{medicinePrescriptions}/{veterinarian}/{lifeInsurance}:
  *    get:
  *      description: Used to get Health Expenses
  *      summary: Get Health Expenses

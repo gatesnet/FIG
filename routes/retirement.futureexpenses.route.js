@@ -7,7 +7,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/retirement/getcountries:
+ * /retirement/getcountries:
  *   get:
  *      description: Used to get all countries
  *      summary: Get all countries

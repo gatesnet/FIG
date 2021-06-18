@@ -4,59 +4,59 @@ const userController = require('../controllers/user.controller');
 const checkAuthMiddleware = require('../middleware/check-auth');
 
 const router = express.Router();
-
+//
 /**
- * @swagger
- * /api/user/register:
- *    post:
- *      description: Register new user to get authorization token when use login endpoint.
- *      summary: Used to register new user for authorization
- *      tags: [User]
- *      requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               firstname:
- *                 type: string
- *                 minLength: 3
- *                 maxLength: 20
- *                 example: John
- *               lastname:
- *                 type: string
- *                 minLength: 3
- *                 maxLength: 20
- *                 example: John
- *               email:
- *                 type: string
- *                 minLength: 8
- *                 maxLength: 45
- *                 example: abcde@abcd.com
- *               password:
- *                 type: string
- *                 minLength: 8
- *                 maxLength: 20
- *                 example: abcdabcd
- *      responses:
- *          '201':
- *              description: User registered sucessfully
- *          '400':
- *              description: Bad request
- *          '401':
- *              description: Authorization information is missing or invalid
- *          '404':
- *              description: Not found
- *          '5xx':
- *              description: Unexpected error
- */
+// * @swagger
+// * /user/register:
+// *    post:
+// *      description: Register new user to get authorization token when use login endpoint.
+// *      summary: Used to register new user for authorization
+// *      tags: [User]
+// *      requestBody:
+// *       required: true
+// *       content:
+// *         application/json:
+// *           schema:
+// *             type: object
+// *             properties:
+// *               firstname:
+// *                 type: string
+// *                 minLength: 3
+// *                 maxLength: 20
+// *                 example: John
+// *               lastname:
+// *                 type: string
+// *                 minLength: 3
+// *                 maxLength: 20
+// *                 example: John
+// *               email:
+// *                 type: string
+// *                 minLength: 8
+// *                 maxLength: 45
+// *                 example: abcde@abcd.com
+// *               password:
+// *                 type: string
+// *                 minLength: 8
+// *                 maxLength: 20
+// *                 example: abcdabcd
+// *      responses:
+// *          '201':
+// *              description: User registered sucessfully
+// *          '400':
+// *              description: Bad request
+// *          '401':
+// *              description: Authorization information is missing or invalid
+// *          '404':
+// *              description: Not found
+// *          '5xx':
+// *              description: Unexpected error
+// */
 
 router.post('/register', userController.register);
 
 /**
  * @swagger
- * /api/user/login:
+ * /user/login:
  *    post:
  *      description: Used To Get Authorization Token
  *      summary: Get Authorization Token.
@@ -103,7 +103,7 @@ router.post('/login', userController.login);
 
 /**
  * @swagger
- * /api/user/users:
+ * /user/users:
  *   get:
  *      description: Used To Get All Users
  *      summary: Get all users
@@ -146,35 +146,35 @@ router.get(
   checkAuthMiddleware.checkAuth,
   userController.getUsers,
 );
-
+//
 /**
- * @swagger
- * /api/user/delete/{id}:
- *    delete:
- *      description: Used To Delete User
- *      summary: Delete User
- *      security:
- *        - bearerAuth: []
- *      tags: [User]
- *      parameters:
- *        - in: path
- *          name: id
- *          required: true
- *          explode: false
- *          schema:
- *            type: integer
- *      responses:
- *          '200':
- *              description: Delete user successful
- *          '400':
- *              description: Bad request
- *          '401':
- *              description: Authorization information is missing or invalid
- *          '404':
- *              description: Not found
- *          '5xx':
- *              description: Unexpected error
- */
+// * @swagger
+// * /user/delete/{id}:
+// *    delete:
+// *      description: Used To Delete User
+// *      summary: Delete User
+// *      security:
+// *        - bearerAuth: []
+// *      tags: [User]
+// *      parameters:
+// *        - in: path
+// *          name: id
+// *          required: true
+// *          explode: false
+// *          schema:
+// *            type: integer
+// *      responses:
+// *          '200':
+// *              description: Delete user successful
+// *          '400':
+// *              description: Bad request
+// *          '401':
+// *              description: Authorization information is missing or invalid
+// *          '404':
+// *              description: Not found
+// *          '5xx':
+// *              description: Unexpected error
+// */
 
 router.delete(
   '/delete/:id',
@@ -183,7 +183,7 @@ router.delete(
 
 /**
  * @swagger
- * /api/user/getuserid/{email}:
+ * /user/getuserid/{email}:
  *    get:
  *      description: Used To get user ID by Email
  *      summary: Get user ID by Email

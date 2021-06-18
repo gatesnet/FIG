@@ -23,20 +23,22 @@ const options = {
     openapi: '3.0.1',
     info: {
       title: 'API Webservices',
+      description: '<div><p>This page describes the methods allowed by this web service.</p><p>You must read the paragraph below before use it !<br><br>You must first retrieve an acces token using the "login" call (fill with your username and password)</b> and after you will be able to use other service calls.</p></div>',
       version: '1.0.0',
     },
+    basebath: 'http://localhost:3000/api',
     servers: [
       {
-        url: 'http://localhost:3000',
-        description: 'This is the Dev server (Localhost)',
+        url: 'http://localhost:3000/api',
+        description: 'Localhost server (uses test data)',
       },
       {
-        url: 'http://apistg.figinvestment.com',
-        description: 'STG Webservice',
+        url: 'http://apistg.figinvestment.com/api',
+        description: 'Sandbox server (uses test data)',
       },
       {
-        url: 'http://api.figinvestment.com',
-        description: 'PROD Webservice',
+        url: 'http://api.figinvestment.com/api',
+        description: 'Production server (uses live data)',
       },
     ],
     components: {
@@ -109,7 +111,6 @@ app.use('/api/retirement', retirementVacationHolidayExpensesRoute);
 const retirementLoanExpensesRoute = require('./routes/retirement.loanexpenses.route');
 
 app.use('/api/retirement', retirementLoanExpensesRoute);
-
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

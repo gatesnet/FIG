@@ -8,7 +8,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/retirement/gethomeexpenses/{mortgageRent}/{rentalInsurance}/{electricity}/{gasOil}/{waterSewarTrash}/{internetPhone}/{vacationCabelSatellite}/{realEstateTaxes}/{furnishingAppliances}/{lawnGarden}/{maintenanceImprovments}/{other}:
+ * /retirement/gethomeexpenses/{mortgageRent}/{rentalInsurance}/{electricity}/{gasOil}/{waterSewarTrash}/{internetPhone}/{vacationCabelSatellite}/{realEstateTaxes}/{furnishingAppliances}/{lawnGarden}/{maintenanceImprovments}/{other}:
  *    get:
  *      description: Used to get Home Expenses
  *      summary: Get Home Expenses

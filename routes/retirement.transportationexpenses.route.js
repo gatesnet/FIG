@@ -8,7 +8,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/retirement/gettransportationexpenses/{carPayments}/{autoInsurance}/{fuel}/{publicTransportation}/{repairsMaintenance}/{registrationLicense}:
+ * /retirement/gettransportationexpenses/{carPayments}/{autoInsurance}/{fuel}/{publicTransportation}/{repairsMaintenance}/{registrationLicense}:
  *    get:
  *      description: Used to get Transportation Expenses
  *      summary: Get Transportation Expenses

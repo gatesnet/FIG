@@ -8,7 +8,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/retirement/getloanexpenses/{mortgageLoan}/{creditCards}/{PersonalLoan}/{other}:
+ * /retirement/getloanexpenses/{mortgageLoan}/{creditCards}/{PersonalLoan}/{other}:
  *    get:
  *      description: Used to get Loan Expenses
  *      summary: Get Loan Expenses

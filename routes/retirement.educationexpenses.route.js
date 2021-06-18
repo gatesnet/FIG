@@ -8,7 +8,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/retirement/geteducationexpenses/{schools}/{college}/{courses}/{other}:
+ * /retirement/geteducationexpenses/{schools}/{college}/{courses}/{other}:
  *    get:
  *      description: Used to get Education Expenses
  *      summary: Get Education Expenses

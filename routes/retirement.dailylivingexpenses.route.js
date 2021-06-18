@@ -8,7 +8,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/retirement/getdailylivingexpenses/{groceries}/{childCare}/{diningOut}/{clothing}/{cleaning}/{salonBarber}/{other}:
+ * /retirement/getdailylivingexpenses/{groceries}/{childCare}/{diningOut}/{clothing}/{cleaning}/{salonBarber}/{other}:
  *    get:
  *      description: Used to get Daily Living Expenses
  *      summary: Get Daily Living Expenses
