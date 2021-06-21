@@ -123,5 +123,5 @@ app.listen(PORT, () => {
   console.log(message);
 });
 
-// Export module to let Mocha app.address to be readable from test files
+// Export module to let Mocha app.address to be readable from test files under test folder
 module.exports = app;
