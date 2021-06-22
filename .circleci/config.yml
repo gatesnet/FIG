@@ -7,17 +7,5 @@ jobs:
       - image: circleci/node:14.7.0
     steps:
       - checkout
-      - run: echo "this is the build job"
-  test:
-    docker:
-      - image: circleci/node:14.7.0
-    steps:
-      - checkout
-      - run: echo "this is the test job"
-
-# Orchestrate our job run sequence
-workflows:
-  build_and_test:
-    jobs:
-      - build
-      - test
+      - run: npm install
+      - run: npm test
