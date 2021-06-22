@@ -7,13 +7,16 @@ jobs:
       - image: circleci/node:14.7.0
     steps:
       - checkout
-      - run: npm install
+      - run:
+          name: "Creating Dummy Artifacts"
+          command: "npm install"
   test:
     docker:
       - image: circleci/node:14.7.0
     steps:
-      - checkout
-      - run: npm test
+      - run:
+          name: "Creating Dummy Artifacts"
+          command: "npm test"
 
 # Orchestrate our job run sequence
 workflows:
