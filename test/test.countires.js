@@ -15,7 +15,7 @@ describe('Test Countries API', () => {
       .post('/api/user/login')
       .send({
         email: 'gatesnet@gmail.com',
-        password: 'Amman@123',
+        password: 'Amman@1234',
       })
       .end((err, res) => {
         token = res.body.token;
