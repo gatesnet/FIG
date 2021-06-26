@@ -1,7 +1,7 @@
 {
   "name": "figapi",
   "version": "1.0.0",
-  "description": "FIG REST API PLATFORM",
+  "description": "FIG REST API Webservice",
   "main": "server.js",
   "scripts": {
     "test": "mocha ./test/*.js",
