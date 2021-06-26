@@ -10,6 +10,13 @@ const compression = require('compression');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
+app.use(bodyParser.json());
+
+app.use(cors());
+app.use(compression());
+
+// use swagger-Ui-express for your app documentation endpoint
+/** Swagger Initialization - START */
 const env = (process.env.NODE_ENV) ? process.env.NODE_ENV : 'development';
 let url;
 
@@ -22,14 +29,6 @@ if (env === 'production') {
 if (env === 'development') {
   url = 'http://apistg.figinvestment.com/api';
 }
-
-app.use(bodyParser.json());
-
-app.use(cors());
-app.use(compression());
-
-// use swagger-Ui-express for your app documentation endpoint
-/** Swagger Initialization - START */
 
 const options = {
   swaggerDefinition: {
@@ -69,6 +68,11 @@ app.get('/', (req, res) => {
 const userRoute = require('./routes/user.route');
 
 app.use('/api/user', userRoute);
+
+// Routes to Retirement Countries
+const retirementCountriesRoute = require('./routes/retirement.countries.route');
+
+app.use('/api/retirement', retirementCountriesRoute);
 
 // Routes to Retirement Future Expenses
 const retirementFutureExpensesRoute = require('./routes/retirement.futureexpenses.route');
@@ -114,6 +118,11 @@ app.use('/api/retirement', retirementVacationHolidayExpensesRoute);
 const retirementLoanExpensesRoute = require('./routes/retirement.loanexpenses.route');
 
 app.use('/api/retirement', retirementLoanExpensesRoute);
+
+// Routes to Retirement Assets Types
+const retirementAssetsTypeRoute = require('./routes/retirement.assetstype.route');
+
+app.use('/api/retirement', retirementAssetsTypeRoute);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
