@@ -1,41 +1,47 @@
 const express = require('express');
 
-const retirementFutureExpensesController = require('../controllers/retirement.futureexpenses.controller');
+const retirementIncomeController = require('../controllers/retirement.income.controller');
 const checkAuthMiddleware = require('../middleware/check-auth');
 
 const router = express.Router();
 
 /**
  * @swagger
- * /retirement/getfutureexpenses/{age}/{expenses}/{livein}:
+ * /retirement/getincome/{assetsId}/{value}/{startage}/{endage}:
  *    get:
- *      description: Used to get Future Expenses
- *      summary: Get Future Expenses
+ *      description: Used to get Income
+ *      summary: Get Income
  *      security:
  *        - bearerAuth: []
  *      tags: [Retirement]
  *      parameters:
  *        - in: path
- *          name: age
+ *          name: assetsId
  *          required: true
  *          explode: false
  *          schema:
  *            type: integer
  *        - in: path
- *          name: expenses
+ *          name: value
  *          required: true
  *          explode: false
  *          schema:
  *            type: integer
  *        - in: path
- *          name: livein
+ *          name: startage
+ *          required: true
+ *          explode: false
+ *          schema:
+ *            type: integer
+ *        - in: path
+ *          name: endage
  *          required: true
  *          explode: false
  *          schema:
  *            type: integer
  *      responses:
  *          '200':
- *              description: Get future expenses successful
+ *              description: Get Income successful
  *              content:
  *                application/json:
  *                  schema:
@@ -45,10 +51,10 @@ const router = express.Router();
  *                        age:
  *                          type: integer
  *                          example: 29
- *                        cumulative:
+ *                        monthlyIncome:
  *                          type: integer
- *                          example: 12000
- *                        annualexpenses:
+ *                          example: 1000
+ *                        yearlyIncome:
  *                          type: integer
  *                          example: 12000
  *          '400':
@@ -62,9 +68,9 @@ const router = express.Router();
  */
 
 router.get(
-  '/getfutureexpenses/:age/:expenses/:livein',
+  '/getincome/:assetsId/:value/:startage/:endage',
   checkAuthMiddleware.checkAuth,
-  retirementFutureExpensesController.getFutureExpenses,
+  retirementIncomeController.getIncome,
 );
 
 module.exports = router;

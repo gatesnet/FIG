@@ -124,6 +124,11 @@ const retirementAssetsTypeRoute = require('./routes/retirement.assetstype.route'
 
 app.use('/api/retirement', retirementAssetsTypeRoute);
 
+// Routes to Retirement Income
+const retirementIncomeRoute = require('./routes/retirement.income.route');
+
+app.use('/api/retirement', retirementIncomeRoute);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
