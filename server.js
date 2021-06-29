@@ -17,7 +17,7 @@ app.use(compression());
 
 // use swagger-Ui-express for your app documentation endpoint
 /** Swagger Initialization - START */
-const env = (process.env.NODE_ENV) ? process.env.NODE_ENV : 'localhost';
+const env = (process.env.NODE_ENV) ? process.env.NODE_ENV : 'development';
 let url;
 
 if (env === 'localhost') {
