@@ -129,6 +129,36 @@ const retirementIncomeRoute = require('./routes/retirement.income.route');
 
 app.use('/api/retirement', retirementIncomeRoute);
 
+// Routes to Risk Tolerance Dependent
+const retirementRiskToleranceDependentRoute = require('./routes/retirement.risktolerancedependent.route');
+
+app.use('/api/retirement', retirementRiskToleranceDependentRoute);
+
+// Routes to Risk Tolerance Equity Market
+const retirementRiskToleranceEquityMarketRoute = require('./routes/retirement.risktoleranceequitymarket.route');
+
+app.use('/api/retirement', retirementRiskToleranceEquityMarketRoute);
+
+// Routes to Risk Tolerance Experienced
+const retirementRiskToleranceExperiencedRoute = require('./routes/retirement.risktoleranceexperienced.route');
+
+app.use('/api/retirement', retirementRiskToleranceExperiencedRoute);
+
+// Routes to Risk Tolerance Factors Influence
+const retirementRiskToleranceFactorsInfluenceRoute = require('./routes/retirement.risktolerancefactorsinfluence.route');
+
+app.use('/api/retirement', retirementRiskToleranceFactorsInfluenceRoute);
+
+// Routes to Risk Tolerance Invest Every Month
+const retirementRiskToleranceInvestEveryMonthRoute = require('./routes/retirement.risktoleranceinvesteverymonth.route');
+
+app.use('/api/retirement', retirementRiskToleranceInvestEveryMonthRoute);
+
+// Routes to Risk Tolerance Investment Horizon
+const retirementRiskToleranceInvestmentHorizonRoute = require('./routes/retirement.risktoleranceinvestmenthorizon.route');
+
+app.use('/api/retirement', retirementRiskToleranceInvestmentHorizonRoute);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
