@@ -11,7 +11,7 @@ let token;
 let userId;
 
 describe('TEST User API', () => {
-  it('Should register test user Expenses on /user/register POST', (done) => {
+  it('Should register test user on /user/register POST', (done) => {
     chai.request(server)
       .post('/api/user/register')
       .send({

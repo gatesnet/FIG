@@ -4,7 +4,7 @@
   "description": "FIG REST API Webservice",
   "main": "server.js",
   "scripts": {
-    "test": "mocha ./test/*.js",
+    "test": "mocha --timeout 10000 ./test/*.js",
     "stop": "pm2 kill",
     "local": "NODE_ENV=localhost nodemon server.js",
     "dev": "NODE_ENV=development pm2 start server.js",

@@ -159,6 +159,11 @@ const retirementRiskToleranceInvestmentHorizonRoute = require('./routes/retireme
 
 app.use('/api/retirement', retirementRiskToleranceInvestmentHorizonRoute);
 
+// Routes to Submit Questionnaire
+const retirementSubmitQuestionnaireRoute = require('./routes/retirement.submitquestionnaire.route');
+
+app.use('/api/retirement', retirementSubmitQuestionnaireRoute);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
