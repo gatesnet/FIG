@@ -22,11 +22,11 @@ describe('Test Submit Questionnaire API', () => {
       });
   });
 
-  it('Should submit questionnaire on /retirement/submitquestionnaire POST', (done) => {
+  it('Should submit questionnaire on /api/retirement/submitquestionnaire POST', (done) => {
     chai.request(server)
       .post('/api/retirement/submitquestionnaire')
       .send({
-        answernumber: '1',
+        answerid: '1',
         questionid: '1',
       })
       .end((err, res) => {

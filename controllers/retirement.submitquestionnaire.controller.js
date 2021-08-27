@@ -22,12 +22,12 @@ exports.addanswer = async function (req, res) {
       return;
     }
 
-    const { answernumber } = req.body;
+    const { answerid } = req.body;
     const { questionid } = req.body;
 
     const pool = await poolPromise;
     await pool.request().query(
-      `INSERT INTO TblQustionnaireAnswers (AnswerNumber, QuestionID) VALUES ('${answernumber}', '${questionid}')`,
+      `INSERT INTO TblQustionnaireAnswers (AnswerID, QuestionID) VALUES ('${answerid}', '${questionid}')`,
 
       function (err) {
         if (err) {

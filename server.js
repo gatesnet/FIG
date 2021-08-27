@@ -165,12 +165,12 @@ const retirementSubmitQuestionnaireRoute = require('./routes/retirement.submitqu
 app.use('/api/retirement', retirementSubmitQuestionnaireRoute);
 
 // Routes  Questions
-const retirementQuestionsRoute = require('./routes/retirement.questions.route');
+const retirementQuestionsRoute = require('./routes/retirement.question.route');
 
 app.use('/api/retirement', retirementQuestionsRoute);
 
 // Routes  Answers
-const retirementAnswerRoute = require('./routes/retirement.answers.route');
+const retirementAnswerRoute = require('./routes/retirement.answer.route');
 
 app.use('/api/retirement', retirementAnswerRoute);
 

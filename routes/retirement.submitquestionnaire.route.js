@@ -21,7 +21,7 @@ const router = express.Router();
 *           schema:
 *             type: object
 *             properties:
-*               answernumber:
+*               answernid:
 *                 type: integer
 *                 minLength: 1
 *                 maxLength: 2
