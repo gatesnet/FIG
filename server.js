@@ -164,6 +164,16 @@ const retirementSubmitQuestionnaireRoute = require('./routes/retirement.submitqu
 
 app.use('/api/retirement', retirementSubmitQuestionnaireRoute);
 
+// Routes  Questions
+const retirementQuestionsRoute = require('./routes/retirement.questions.route');
+
+app.use('/api/retirement', retirementQuestionsRoute);
+
+// Routes  Answers
+const retirementAnswerRoute = require('./routes/retirement.answers.route');
+
+app.use('/api/retirement', retirementAnswerRoute);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
