@@ -28,7 +28,7 @@ const router = express.Router();
 *                          example: 1
 *                        QuestionsText:
 *                          type: string
-*                          example: Yes
+*                          example: I plan to begin taking money from my investments in
 *          '400':
 *              description: Bad request
 *          '401':
