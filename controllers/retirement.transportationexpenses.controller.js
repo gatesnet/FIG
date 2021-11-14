@@ -24,12 +24,12 @@ exports.getTransportationExpenses = async function (req, res) {
       return;
     }
 
-    const carPayments = parseInt(req.params.carPayments, 10);
-    const autoInsurance = parseInt(req.params.autoInsurance, 10);
-    const fuel = parseInt(req.params.fuel, 10);
-    const publicTransportation = parseInt(req.params.publicTransportation, 10);
-    const repairsMaintenance = parseInt(req.params.repairsMaintenance, 10);
-    const registrationLicense = parseInt(req.params.registrationLicense, 10);
+    const carPayments = parseFloat(req.params.carPayments, 10);
+    const autoInsurance = parseFloat(req.params.autoInsurance, 10);
+    const fuel = parseFloat(req.params.fuel, 10);
+    const publicTransportation = parseFloat(req.params.publicTransportation, 10);
+    const repairsMaintenance = parseFloat(req.params.repairsMaintenance, 10);
+    const registrationLicense = parseFloat(req.params.registrationLicense, 10);
     const transportationExpensesWeekly = [];
     const transportationExpensesYearly = [];
     let totalTransportationWeeklyExpenses = 0;

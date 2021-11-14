@@ -172,6 +172,11 @@ app.use('/api/retirement', retirementQuestionsRoute);
 // Routes  Answers
 const retirementAnswerRoute = require('./routes/retirement.answer.route');
 
+// Routes  Client Retirement Calculators
+const retirementclientretirementcalculatorsRoute = require('./routes/retirement.clientretirementcalculators.route');
+
+app.use('/api/retirement', retirementclientretirementcalculatorsRoute);
+
 app.use('/api/retirement', retirementAnswerRoute);
 
 // set port, listen for requests

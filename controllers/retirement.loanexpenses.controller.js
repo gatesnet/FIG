@@ -22,10 +22,10 @@ exports.getLoanExpenses = async function (req, res) {
       return;
     }
 
-    const mortgageLoan = parseInt(req.params.mortgageLoan, 10);
-    const creditCards = parseInt(req.params.creditCards, 10);
-    const PersonalLoan = parseInt(req.params.PersonalLoan, 10);
-    const otherLoan = parseInt(req.params.other, 10);
+    const mortgageLoan = parseFloat(req.params.mortgageLoan, 10);
+    const creditCards = parseFloat(req.params.creditCards, 10);
+    const PersonalLoan = parseFloat(req.params.PersonalLoan, 10);
+    const otherLoan = parseFloat(req.params.other, 10);
     const loanExpensesWeekly = [];
     const loanExpensesYearly = [];
     let totalLoanWeeklyExpenses = 0;

@@ -25,13 +25,13 @@ exports.getDailyLivingExpenses = async function (req, res) {
       return;
     }
 
-    const groceries = parseInt(req.params.groceries, 10);
-    const childCare = parseInt(req.params.childCare, 10);
-    const diningOut = parseInt(req.params.diningOut, 10);
-    const clothing = parseInt(req.params.clothing, 10);
-    const cleaning = parseInt(req.params.cleaning, 10);
-    const salonBarber = parseInt(req.params.salonBarber, 10);
-    const otherDailyLiving = parseInt(req.params.other, 10);
+    const groceries = parseFloat(req.params.groceries, 10);
+    const childCare = parseFloat(req.params.childCare, 10);
+    const diningOut = parseFloat(req.params.diningOut, 10);
+    const clothing = parseFloat(req.params.clothing, 10);
+    const cleaning = parseFloat(req.params.cleaning, 10);
+    const salonBarber = parseFloat(req.params.salonBarber, 10);
+    const otherDailyLiving = parseFloat(req.params.other, 10);
     const dailyLivingExpensesWeekly = [];
     const dailyLivingExpensesYearly = [];
     let totalDailyLivingWeeklyExpenses = 0;

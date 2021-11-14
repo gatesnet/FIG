@@ -24,12 +24,12 @@ exports.getHealthExpenses = async function (req, res) {
       return;
     }
 
-    const healthInsurance = parseInt(req.params.healthInsurance, 10);
-    const gymMembership = parseInt(req.params.gymMembership, 10);
-    const doctorDentistVisits = parseInt(req.params.doctorDentistVisits, 10);
-    const medicinePrescriptions = parseInt(req.params.medicinePrescriptions, 10);
-    const veterinarian = parseInt(req.params.veterinarian, 10);
-    const lifeInsurance = parseInt(req.params.lifeInsurance, 10);
+    const healthInsurance = parseFloat(req.params.healthInsurance, 10);
+    const gymMembership = parseFloat(req.params.gymMembership, 10);
+    const doctorDentistVisits = parseFloat(req.params.doctorDentistVisits, 10);
+    const medicinePrescriptions = parseFloat(req.params.medicinePrescriptions, 10);
+    const veterinarian = parseFloat(req.params.veterinarian, 10);
+    const lifeInsurance = parseFloat(req.params.lifeInsurance, 10);
     const healthExpensesWeekly = [];
     const healthExpensesYearly = [];
     let totalHealthWeeklyExpenses = 0;

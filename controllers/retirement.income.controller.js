@@ -24,9 +24,9 @@ exports.getIncome = async function (req, res) {
     }
 
     const assetsId = parseInt(req.params.assetsId, 10);
-    const value = parseInt(req.params.value, 10);
-    let startage = parseInt(req.params.startage, 10);
-    const endage = parseInt(req.params.endage, 10);
+    const value = parseFloat(req.params.value, 10);
+    let startage = parseFloat(req.params.startage, 10);
+    const endage = parseFloat(req.params.endage, 10);
 
     console.log(assetsId);
 

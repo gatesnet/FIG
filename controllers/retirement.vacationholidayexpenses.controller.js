@@ -24,12 +24,12 @@ exports.getVacationHolidayExpenses = async function (req, res) {
       return;
     }
 
-    const airfare = parseInt(req.params.airfare, 10);
-    const accommodations = parseInt(req.params.accommodations, 10);
-    const food = parseInt(req.params.food, 10);
-    const souvenirs = parseInt(req.params.souvenirs, 10);
-    const rentalCar = parseInt(req.params.rentalCar, 10);
-    const otherVacationHoliday = parseInt(req.params.other, 10);
+    const airfare = parseFloat(req.params.airfare, 10);
+    const accommodations = parseFloat(req.params.accommodations, 10);
+    const food = parseFloat(req.params.food, 10);
+    const souvenirs = parseFloat(req.params.souvenirs, 10);
+    const rentalCar = parseFloat(req.params.rentalCar, 10);
+    const otherVacationHoliday = parseFloat(req.params.other, 10);
     const vacationHolidayExpensesWeekly = [];
     const vacationHolidayExpensesYearly = [];
     let totalVacationHolidayWeeklyExpenses = 0;

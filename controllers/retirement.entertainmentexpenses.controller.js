@@ -22,10 +22,10 @@ exports.getEntertainmentExpenses = async function (req, res) {
       return;
     }
 
-    const children = parseInt(req.params.children, 10);
-    const concertsPlays = parseInt(req.params.concertsPlays, 10);
-    const sports = parseInt(req.params.sports, 10);
-    const outdoorRecreation = parseInt(req.params.outdoorRecreation, 10);
+    const children = parseFloat(req.params.children, 10);
+    const concertsPlays = parseFloat(req.params.concertsPlays, 10);
+    const sports = parseFloat(req.params.sports, 10);
+    const outdoorRecreation = parseFloat(req.params.outdoorRecreation, 10);
     const entertainmentExpensesWeekly = [];
     const entertainmentExpensesYearly = [];
     let totalEntertainmentWeeklyExpenses = 0;

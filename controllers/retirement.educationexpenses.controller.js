@@ -22,10 +22,10 @@ exports.getEducationExpenses = async function (req, res) {
       return;
     }
 
-    const schools = parseInt(req.params.schools, 10);
-    const college = parseInt(req.params.college, 10);
-    const courses = parseInt(req.params.courses, 10);
-    const otherEducation = parseInt(req.params.other, 10);
+    const schools = parseFloat(req.params.schools, 10);
+    const college = parseFloat(req.params.college, 10);
+    const courses = parseFloat(req.params.courses, 10);
+    const otherEducation = parseFloat(req.params.other, 10);
     const educationExpensesWeekly = [];
     const educationExpensesYearly = [];
     let totalEducationWeeklyExpenses = 0;

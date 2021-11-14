@@ -30,18 +30,18 @@ exports.getHomeExpenses = async function (req, res) {
       return;
     }
 
-    const mortgageRent = parseInt(req.params.mortgageRent, 10);
-    const rentalInsurance = parseInt(req.params.rentalInsurance, 10);
-    const electricity = parseInt(req.params.electricity, 10);
-    const gasOil = parseInt(req.params.gasOil, 10);
-    const waterSewarTrash = parseInt(req.params.waterSewarTrash, 10);
-    const internetPhone = parseInt(req.params.internetPhone, 10);
-    const vacationCabelSatellite = parseInt(req.params.vacationCabelSatellite, 10);
-    const realEstateTaxes = parseInt(req.params.realEstateTaxes, 10);
-    const furnishingAppliances = parseInt(req.params.furnishingAppliances, 10);
-    const lawnGarden = parseInt(req.params.lawnGarden, 10);
-    const maintenanceImprovments = parseInt(req.params.maintenanceImprovments, 10);
-    const otherHome = parseInt(req.params.other, 10);
+    const mortgageRent = parseFloat(req.params.mortgageRent, 10);
+    const rentalInsurance = parseFloat(req.params.rentalInsurance, 10);
+    const electricity = parseFloat(req.params.electricity, 10);
+    const gasOil = parseFloat(req.params.gasOil, 10);
+    const waterSewarTrash = parseFloat(req.params.waterSewarTrash, 10);
+    const internetPhone = parseFloat(req.params.internetPhone, 10);
+    const vacationCabelSatellite = parseFloat(req.params.vacationCabelSatellite, 10);
+    const realEstateTaxes = parseFloat(req.params.realEstateTaxes, 10);
+    const furnishingAppliances = parseFloat(req.params.furnishingAppliances, 10);
+    const lawnGarden = parseFloat(req.params.lawnGarden, 10);
+    const maintenanceImprovments = parseFloat(req.params.maintenanceImprovments, 10);
+    const otherHome = parseFloat(req.params.other, 10);
     const homeExpensesWeekly = [];
     const homeExpensesYearly = [];
     let totalHomeWeeklyExpenses = 0;

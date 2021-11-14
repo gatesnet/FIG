@@ -21,8 +21,8 @@ exports.getFutureExpenses = async function (req, res) {
       return;
     }
 
-    let age = parseInt(req.params.age, 10);
-    const expenses = parseInt(req.params.expenses, 10);
+    let age = parseFloat(req.params.age, 10);
+    const expenses = parseFloat(req.params.expenses, 10);
     let annualExpenses = expenses * 12;
     let CumulativeExpenses = annualExpenses;
     const futureExpenses = [];
