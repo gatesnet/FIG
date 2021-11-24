@@ -24,9 +24,9 @@ describe('Test Required Monthly contribution API', () => {
       });
   });
 
-  it('Should list Required Monthly contribution on /getclientretirementcalculators/:currentAge/:currentSavingsBalance/:monthlyEarnings/:retirementAge/:monthlyExpensesDuringRetirement/:other GET', (done) => {
+  it('Should list Required Monthly contribution on /getclientretirementcalculators/:currentAge/:currentSavingsBalance/:monthlyEarnings/:retirementAge/:monthlyExpensesDuringRetirement/:assumedAnnualInflation/:assumedYearsDuringRetirement/:expectedNominalReturnOnAssets GET', (done) => {
     chai.request(server)
-      .get('/api/retirement/getclientretirementcalculators/24/20000/1000/55/1000')
+      .get('/api/retirement/getclientretirementcalculators/24/20000/1000/55/1000/0.02/30/0.05')
       .set({ Authorization: `Bearer ${token}` })
       .end((err, res) => {
         res.should.have.status(200);

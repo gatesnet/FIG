@@ -8,7 +8,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /retirement/getclientretirementcalculators/{currentAge}/{currentSavingsBalance}/{monthlyEarnings}/{retirementAge}/{monthlyExpensesDuringRetirement}:
+ * /retirement/getclientretirementcalculators/{currentAge}/{currentSavingsBalance}/{monthlyEarnings}/{retirementAge}/{monthlyExpensesDuringRetirement}/{assumedAnnualInflation}/{assumedYearsDuringRetirement}/{expectedNominalReturnOnAssets}:
  *    get:
  *      description: Used to get Required Monthly contribution
  *      summary: Get Required Monthly contribution
@@ -46,6 +46,24 @@ const router = express.Router();
  *          explode: false
  *          schema:
  *            type: float
+ *        - in: path
+ *          name: assumedAnnualInflation
+ *          required: false
+ *          explode: false
+ *          schema:
+ *            type: float
+ *        - in: path
+ *          name: assumedYearsDuringRetirement
+ *          required: false
+ *          explode: false
+ *          schema:
+ *            type: float
+ *        - in: path
+ *          name: expectedNominalReturnOnAssets
+ *          required: false
+ *          explode: false
+ *          schema:
+ *            type: float
  *      responses:
  *          '200':
  *              description: Get Required Monthly contribution successful
@@ -69,7 +87,7 @@ const router = express.Router();
  */
 
 router.get(
-  '/getclientretirementcalculators/:currentAge/:currentSavingsBalance/:monthlyEarnings/:retirementAge/:monthlyExpensesDuringRetirement',
+  '/getclientretirementcalculators/:currentAge/:currentSavingsBalance/:monthlyEarnings/:retirementAge/:monthlyExpensesDuringRetirement/:assumedAnnualInflation/:assumedYearsDuringRetirement/:expectedNominalReturnOnAssets',
   checkAuthMiddleware.checkAuth,
   retirementClientRetirementCalculatorsController.getClientRetirementCalculators,
 );
