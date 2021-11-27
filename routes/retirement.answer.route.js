@@ -5,7 +5,7 @@ const checkAuthMiddleware = require('../middleware/check-auth');
 
 const router = express.Router();
 
-/**
+/*
 * @swagger
 * /retirement/getanswer:
 *   get:
