@@ -179,6 +179,11 @@ app.use('/api/retirement', retirementclientretirementcalculatorsRoute);
 
 app.use('/api/retirement', retirementAnswerRoute);
 
+// Routes  Future Purchase Calculator
+const retirementfuturepurchasecalculatorRoute = require('./routes/retirement.futurepurchasecalculator.route');
+
+app.use('/api/retirement', retirementfuturepurchasecalculatorRoute);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

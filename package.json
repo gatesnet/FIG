@@ -13,6 +13,7 @@
   "author": "Saleh Aqrabawi",
   "license": "ISC",
   "dependencies": {
+    "@joi/date": "^2.1.0",
     "app-root-path": "^3.0.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
