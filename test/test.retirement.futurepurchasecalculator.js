@@ -7,7 +7,7 @@ const server = require('../server');
 chai.should();
 chai.use(chaiHttp);
 
-let token;``
+let token; '';
 
 describe('Test Future Purchase Calculator API', () => {
   it('Should Test User login and get Token ID on /user/login POST', (done) => {
@@ -24,7 +24,7 @@ describe('Test Future Purchase Calculator API', () => {
       });
   });
 
-  it('Should list  Future Purchase Calculator on /getfuturepurchasecalculator/:StartDateOfInvestmentHorizon/:EndDateOfInvestmentHorizon/:Today/:DepositRate/:Monthly/:Quarterly/:SemiAnnual/:Annual/:PurchaseCost/:CurrentBalance/:ExpectedNominalReturnDuringInvestmentHorizon/:InflationAssumptionDuringInvestmentHorizon GET', (done) => {
+  it('Should list  Future Purchase Calculator on /getfuturepurchasecalculator/:startDateOfInvestmentHorizon/:endDateOfInvestmentHorizon/:depositRate/:frequencyOfDepositRate/:purchaseCost/:currentBalance/:expectedNominalReturnDuringInvestmentHorizon/:inflationAssumptionDuringInvestmentHorizon GET', (done) => {
     chai.request(server)
       .get('/api/retirement/getfuturepurchasecalculator/24/20000/1000/55/1000/0.02/30/0.05')
       .set({ Authorization: `Bearer ${token}` })
