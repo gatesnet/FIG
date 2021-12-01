@@ -7,9 +7,9 @@ const server = require('../server');
 chai.should();
 chai.use(chaiHttp);
 
-let token; '';
+let token;
 
-describe('Test Future Purchase Calculator API', () => {
+describe('Test Future Expenses API', () => {
   it('Should Test User login and get Token ID on /user/login POST', (done) => {
     chai.request(server)
       .post('/api/user/login')
@@ -24,9 +24,9 @@ describe('Test Future Purchase Calculator API', () => {
       });
   });
 
-  it('Should list  Future Purchase Calculator on /getfuturepurchasecalculator/:startDateOfInvestmentHorizon/:endDateOfInvestmentHorizon/:depositRate/:frequencyOfDepositRate/:purchaseCost/:currentBalance/:expectedNominalReturnDuringInvestmentHorizon/:inflationAssumptionDuringInvestmentHorizon GET', (done) => {
+  it('Should list Future Expenses on /getfutureexpenses2/:portfolioBalance/:yearsUntilRetirement/:monthlyContributionToPortfolio/:yearsDuringRetirement/:expectedReturnOnPortfolio/:inflationAssumption GET', (done) => {
     chai.request(server)
-      .get('/api/retirement/getfuturepurchasecalculator/2021%2F11%2F16/2021%2F05%2F08/.2/1000/100000/30000/.05/.02')
+      .get('/api/retirement/getfutureexpenses2/5000/30/1000/20/.05/.02')
       .set({ Authorization: `Bearer ${token}` })
       .end((err, res) => {
         res.should.have.status(200);

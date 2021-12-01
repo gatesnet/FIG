@@ -172,17 +172,42 @@ app.use('/api/retirement', retirementQuestionsRoute);
 // Routes  Answers
 const retirementAnswerRoute = require('./routes/retirement.answer.route');
 
-// Routes  Client Retirement Calculators
-const retirementclientretirementcalculatorsRoute = require('./routes/retirement.clientretirementcalculators.route');
-
-app.use('/api/retirement', retirementclientretirementcalculatorsRoute);
-
 app.use('/api/retirement', retirementAnswerRoute);
 
-// Routes  Future Purchase Calculator
-const retirementfuturepurchasecalculatorRoute = require('./routes/retirement.futurepurchasecalculator.route');
+// Routes  Client Retirement Calculators
+const retirementClientRetirementCalculatorsRoute = require('./routes/retirement.clientretirementcalculators.route');
 
-app.use('/api/retirement', retirementfuturepurchasecalculatorRoute);
+app.use('/api/retirement', retirementClientRetirementCalculatorsRoute);
+
+// Routes  Future Purchase Calculator
+const retirementFuturePurchaseCalculatorRoute = require('./routes/retirement.futurepurchasecalculator.route');
+
+app.use('/api/retirement', retirementFuturePurchaseCalculatorRoute);
+
+// Routes  Recurring Charity Payments
+const retirementRecurringCharityPaymentsRoute = require('./routes/retirement.recurringcharitypayments.route');
+
+app.use('/api/retirement', retirementRecurringCharityPaymentsRoute);
+
+// Routes  Education
+const retirementEducationRoute = require('./routes/retirement.education.route');
+
+app.use('/api/retirement', retirementEducationRoute);
+
+// Routes  Single Charity Payment
+const retirementSingleCharityPaymentRoute = require('./routes/retirement.submitquestionnaire.route');
+
+app.use('/api/retirement', retirementSingleCharityPaymentRoute);
+
+// Routes  Future Events
+const retirementFutureEventsRoute = require('./routes/retirement.futureevents.route');
+
+app.use('/api/retirement', retirementFutureEventsRoute);
+
+// Routes  Future Expenses
+const retirementFutureExpenses2Route = require('./routes/retirement.futureexpenses2.route');
+
+app.use('/api/retirement', retirementFutureExpenses2Route);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
