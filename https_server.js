@@ -1,8 +1,8 @@
 var https = require('https');
 var fs = require('fs');
 var https_options = {
-key: fs.readFileSync("/ssl/figinvestment.com_key.txt"),
-cert: fs.readFileSync("/ssl/figinvestment.com.crt"),
+key: fs.readFileSync("ssl/figinvestment.com_key.txt"),
+cert: fs.readFileSync("ssl/figinvestment.com.crt"),
 ca: [
 fs.readFileSync('ss/figinvestment.com.ca-bundle')
 ]

@@ -9,6 +9,8 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const compression = require('compression');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+var https = require('https');
+var fs = require('fs');
 
 app.use(bodyParser.json());
 
@@ -208,6 +210,26 @@ app.use('/api/retirement', retirementFutureEventsRoute);
 const retirementFutureExpenses2Route = require('./routes/retirement.futureexpenses2.route');
 
 app.use('/api/retirement', retirementFutureExpenses2Route);
+
+
+
+// SSL Enable
+
+var https_options = {
+key: fs.readFileSync("ssl/figinvestment.com_key.txt"),
+cert: fs.readFileSync("ssl/figinvestment.com.crt"),
+ca: [
+fs.readFileSync('ss/figinvestment.com.ca-bundle')
+]
+};
+
+
+// serve the API with signed certificate on 443 (SSL/HTTPS) port
+const httpsServer = https.createServer({
+  key: fs.readFileSync('ssl/privkey.pem'),
+  cert: fs.readFileSync('ssl/fullchain.pem'),
+}, app);
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
