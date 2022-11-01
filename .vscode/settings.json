@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/8a9ce7ba-f9c1-41eb-9cfe-9f24b54c12ad/AppServices/subscriptions/8a9ce7ba-f9c1-41eb-9cfe-9f24b54c12ad/resourceGroups/APIGROUP/providers/Microsoft.Web/sites/SSL-FIG",
+    "appService.deploySubpath": "."
+}
