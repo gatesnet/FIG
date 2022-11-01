@@ -24,7 +24,7 @@ if (env === 'localhost') {
   url = 'http://localhost:3000/api';
 }
 if (env === 'production') {
-  url = 'http://api.figinvestment.com/api';
+  url = 'https://api.figinvestment.com/api';
 }
 if (env === 'development') {
   url = 'http://apistg.figinvestment.com/api';
