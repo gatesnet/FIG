@@ -20,15 +20,15 @@ app.use(compression());
 const env = (process.env.NODE_ENV) ? process.env.NODE_ENV : 'localhost';
 let url;
 
-// if (env === 'localhost') {
-  //url = 'http://localhost:3000/api';
-//}
-//if (env === 'production') {
+ if (env === 'localhost') {
+  url = 'http://localhost:3000/api';
+}
+if (env === 'production') {
   url = 'https://api.figinvestment.com/api';
-//}
-//if (env === 'development') {
-  //url = 'http://apistg.figinvestment.com/api';
-//}
+}
+if (env === 'development') {
+  url = 'http://apistg.figinvestment.com/api';
+}
 
 const options = {
   swaggerDefinition: {
