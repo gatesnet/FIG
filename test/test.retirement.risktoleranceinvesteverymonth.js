@@ -14,8 +14,8 @@ describe('Test Risk Tolerance Invest Every Month API', () => {
     chai.request(server)
       .post('/api/user/login')
       .send({
-        email: 'gatesnet@gmail.com',
-        password: 'Amman@123',
+        email: 'api@figinvestment.com',
+        password: 'FIG@^*135_0987',
       })
       .end((err, res) => {
         token = res.body.token;

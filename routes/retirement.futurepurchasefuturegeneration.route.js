@@ -1,41 +1,29 @@
 /* eslint-disable max-len */
 const express = require('express');
 
-const retirementEducationController = require('../controllers/retirement.education.controller');
+const retirementFuturePurchaseFutureGenerationController = require('../controllers/retirement.futurepurchasefuturegeneration.controller');
 const checkAuthMiddleware = require('../middleware/check-auth');
 
 const router = express.Router();
 
 /**
  * @swagger
- * /retirement/geteducation/{yearsUntilEducationPaymentsStart}/{lengthOfEducationPayments}/{frequencyOfPayments}/{valueOfSinglePayment}/{currentBalance}/{inflationAssumption}/{freuencyOfContributionToPortfolio}:
+ * /retirement/getfuturepurchasefuturegeneration/{yearsUntilDonation}/{desiredDonationAmount}/{currentBalance}/{inflationAssumption}/{freuencyOfContributionToPortfolio}:
  *    get:
- *      description: Used to get Education
- *      summary: Get Required Education
+ *      description: Used to get Future Purchase Lifestyle
+ *      summary: Get Required Future Purchase Lifestyle
  *      security:
  *        - bearerAuth: []
  *      tags: [Retirement]
  *      parameters:
  *        - in: path
- *          name: yearsUntilEducationPaymentsStart
+ *          name: yearsUntilDonation
  *          required: false
  *          explode: false
  *          schema:
  *            type: float
  *        - in: path
- *          name: lengthOfEducationPayments
- *          required: false
- *          explode: false
- *          schema:
- *            type: float
- *        - in: path
- *          name: frequencyOfPayments
- *          required: false
- *          explode: false
- *          schema:
- *            type: string
- *        - in: path
- *          name: valueOfSinglePayment
+ *          name: desiredDonationAmount
  *          required: false
  *          explode: false
  *          schema:
@@ -45,7 +33,7 @@ const router = express.Router();
  *          required: false
  *          explode: false
  *          schema:
- *            type: float
+ *            type: flaot
  *        - in: path
  *          name: inflationAssumption
  *          required: false
@@ -60,7 +48,7 @@ const router = express.Router();
  *            type: string 
  *      responses:
  *          '200':
- *              description: Get Education successful
+ *              description: Get Recurring Charity Payments successful
  *              content:
  *                application/json:
  *                  schema:
@@ -81,9 +69,9 @@ const router = express.Router();
  */
 
 router.get(
-  '/geteducation/:yearsUntilEducationPaymentsStart/:lengthOfEducationPayments/:frequencyOfPayments/:valueOfSinglePayment/:currentBalance/:inflationAssumption/:freuencyOfContributionToPortfolio',
+  '/getfuturepurchasefuturegeneration/:yearsUntilDonation/:desiredDonationAmount/:currentBalance/:inflationAssumption/:freuencyOfContributionToPortfolio',
   checkAuthMiddleware.checkAuth,
-  retirementEducationController.getEducation,
+  retirementFuturePurchaseFutureGenerationController.getFuturePurchaseFutureGeneration,
 );
 
 module.exports = router;

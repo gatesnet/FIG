@@ -1,29 +1,29 @@
 /* eslint-disable max-len */
 const express = require('express');
 
-const retirementEducationController = require('../controllers/retirement.education.controller');
+const retirementRetirementController = require('../controllers/retirement.retirement.controller');
 const checkAuthMiddleware = require('../middleware/check-auth');
 
 const router = express.Router();
 
 /**
  * @swagger
- * /retirement/geteducation/{yearsUntilEducationPaymentsStart}/{lengthOfEducationPayments}/{frequencyOfPayments}/{valueOfSinglePayment}/{currentBalance}/{inflationAssumption}/{freuencyOfContributionToPortfolio}:
+ * /retirement/getretirement/{yearsUntilRetirementPaymentsStart}/{lengthOfRetirementPayments}/{frequencyOfPayments}/{valueOfSinglePayment}/{currentBalance}/{inflationAssumption}/{freuencyOfContributionToPortfolio}:
  *    get:
- *      description: Used to get Education
- *      summary: Get Required Education
+ *      description: Used to get Retirement
+ *      summary: Get Required Retirement
  *      security:
  *        - bearerAuth: []
  *      tags: [Retirement]
  *      parameters:
  *        - in: path
- *          name: yearsUntilEducationPaymentsStart
+ *          name: yearsUntilRetirementPaymentsStart
  *          required: false
  *          explode: false
  *          schema:
  *            type: float
  *        - in: path
- *          name: lengthOfEducationPayments
+ *          name: lengthOfRetirementPayments
  *          required: false
  *          explode: false
  *          schema:
@@ -60,7 +60,7 @@ const router = express.Router();
  *            type: string 
  *      responses:
  *          '200':
- *              description: Get Education successful
+ *              description: Get Retirement successful
  *              content:
  *                application/json:
  *                  schema:
@@ -81,9 +81,9 @@ const router = express.Router();
  */
 
 router.get(
-  '/geteducation/:yearsUntilEducationPaymentsStart/:lengthOfEducationPayments/:frequencyOfPayments/:valueOfSinglePayment/:currentBalance/:inflationAssumption/:freuencyOfContributionToPortfolio',
+  '/getretirement/:yearsUntilRetirementPaymentsStart/:lengthOfRetirementPayments/:frequencyOfPayments/:valueOfSinglePayment/:currentBalance/:inflationAssumption/:freuencyOfContributionToPortfolio',
   checkAuthMiddleware.checkAuth,
-  retirementEducationController.getEducation,
+  retirementRetirementController.getRetirement,
 );
 
 module.exports = router;

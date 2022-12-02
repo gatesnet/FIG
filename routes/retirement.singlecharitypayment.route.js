@@ -8,10 +8,10 @@ const router = express.Router();
 
 /**
  * @swagger
- * /retirement/getsinglecharitypayment/{yearsUntilDonation}/{desiredDonationAmount}/{currentBalance}/{expectedNominalReturn}/{inflationAssumption}:
+ * /retirement/getsinglecharitypayment/{yearsUntilDonation}/{desiredDonationAmount}/{currentBalance}/{inflationAssumption}/{freuencyOfContributionToPortfolio}:
  *    get:
- *      description: Used to get Recurring Charity Payments
- *      summary: Get Required Recurring Charity Payments
+ *      description: Used to get single Charity Payments
+ *      summary: Get Required single Charity Payments
  *      security:
  *        - bearerAuth: []
  *      tags: [Retirement]
@@ -35,17 +35,17 @@ const router = express.Router();
  *          schema:
  *            type: flaot
  *        - in: path
- *          name: expectedNominalReturn
- *          required: false
- *          explode: false
- *          schema:
- *            type: float
- *        - in: path
  *          name: inflationAssumption
  *          required: false
  *          explode: false
  *          schema:
  *            type: float
+ *        - in: path
+ *          name: freuencyOfContributionToPortfolio
+ *          required: false
+ *          explode: false
+ *          schema:
+ *            type: string 
  *      responses:
  *          '200':
  *              description: Get Recurring Charity Payments successful
@@ -69,7 +69,7 @@ const router = express.Router();
  */
 
 router.get(
-  '/getsinglecharitypayment/:yearsUntilDonation/:desiredDonationAmount/:currentBalance/:expectedNominalReturn/:inflationAssumption',
+  '/getsinglecharitypayment/:yearsUntilDonation/:desiredDonationAmount/:currentBalance/:inflationAssumption/:freuencyOfContributionToPortfolio',
   checkAuthMiddleware.checkAuth,
   retirementSingleCharityPaymentController.getSingleCharityPayment,
 );

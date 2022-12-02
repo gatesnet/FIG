@@ -14,8 +14,8 @@ describe('Test Single Charity Payment API', () => {
     chai.request(server)
       .post('/api/user/login')
       .send({
-        email: 'gatesnet@gmail.com',
-        password: 'Amman@123',
+        email: 'api@figinvestment.com',
+        password: 'FIG@^*135_0987',
       })
       .end((err, res) => {
         token = res.body.token;
@@ -24,9 +24,9 @@ describe('Test Single Charity Payment API', () => {
       });
   });
 
-  it('Should list Single Charity Payment on /getsinglecharitypayment/:yearsUntilDonation/:desiredDonationAmount/:currentBalance/:expectedNominalReturn/:inflationAssumption GET', (done) => {
+  it('Should list Single Charity Payment on /getsinglecharitypayment/:yearsUntilDonation/:desiredDonationAmount/:currentBalance/:inflationAssumption/:freuencyOfContributionToPortfolio GET', (done) => {
     chai.request(server)
-      .get('/api/retirement/getrecurringcharitypayments/6/4/Monthly/1500/3000/.05/.02')
+      .get('/api/retirement/getsinglecharitypayment/3/5000/3000/5/annual')
       .set({ Authorization: `Bearer ${token}` })
       .end((err, res) => {
         res.should.have.status(200);

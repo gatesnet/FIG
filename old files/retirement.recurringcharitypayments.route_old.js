@@ -1,29 +1,29 @@
 /* eslint-disable max-len */
 const express = require('express');
 
-const retirementEducationController = require('../controllers/retirement.education.controller');
+const retirementRecurringCharityPaymentsController = require('../controllers/retirement.recurringcharitypayments.controller');
 const checkAuthMiddleware = require('../middleware/check-auth');
 
 const router = express.Router();
 
 /**
  * @swagger
- * /retirement/geteducation/{yearsUntilEducationPaymentsStart}/{lengthOfEducationPayments}/{frequencyOfPayments}/{valueOfSinglePayment}/{currentBalance}/{inflationAssumption}/{freuencyOfContributionToPortfolio}:
+ * /retirement/getrecurringcharitypayments/{yearsUntilCharityPaymentsStart}/{lengthOfCharityPayments}/{frequencyOfPayments}/{valueOfSinglePayment}/{currentBalance}/{expectedReturn}/{inflationAssumption}:
  *    get:
- *      description: Used to get Education
- *      summary: Get Required Education
+ *      description: Used to get Recurring Charity Payments
+ *      summary: Get Required Recurring Charity Payments
  *      security:
  *        - bearerAuth: []
  *      tags: [Retirement]
  *      parameters:
  *        - in: path
- *          name: yearsUntilEducationPaymentsStart
+ *          name: yearsUntilCharityPaymentsStart
  *          required: false
  *          explode: false
  *          schema:
  *            type: float
  *        - in: path
- *          name: lengthOfEducationPayments
+ *          name: lengthOfCharityPayments
  *          required: false
  *          explode: false
  *          schema:
@@ -47,20 +47,20 @@ const router = express.Router();
  *          schema:
  *            type: float
  *        - in: path
- *          name: inflationAssumption
+ *          name: expectedReturn
  *          required: false
  *          explode: false
  *          schema:
  *            type: float
  *        - in: path
- *          name: freuencyOfContributionToPortfolio
+ *          name: inflationAssumption
  *          required: false
  *          explode: false
  *          schema:
- *            type: string 
+ *            type: float
  *      responses:
  *          '200':
- *              description: Get Education successful
+ *              description: Get Recurring Charity Payments successful
  *              content:
  *                application/json:
  *                  schema:
@@ -81,9 +81,9 @@ const router = express.Router();
  */
 
 router.get(
-  '/geteducation/:yearsUntilEducationPaymentsStart/:lengthOfEducationPayments/:frequencyOfPayments/:valueOfSinglePayment/:currentBalance/:inflationAssumption/:freuencyOfContributionToPortfolio',
+  '/getrecurringcharitypayments/:yearsUntilCharityPaymentsStart/:lengthOfCharityPayments/:frequencyOfPayments/:valueOfSinglePayment/:currentBalance/:expectedReturn/:inflationAssumption',
   checkAuthMiddleware.checkAuth,
-  retirementEducationController.getEducation,
+  retirementRecurringCharityPaymentsController.getRecurringCharityPayments,
 );
 
 module.exports = router;

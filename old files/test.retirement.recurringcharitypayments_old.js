@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 
 let token;
 
-describe('Test Risk Tolerance Equity Market API', () => {
+describe('Test Recurring Charity Payments API', () => {
   it('Should Test User login and get Token ID on /user/login POST', (done) => {
     chai.request(server)
       .post('/api/user/login')
@@ -24,9 +24,9 @@ describe('Test Risk Tolerance Equity Market API', () => {
       });
   });
 
-  it('Should list ALL Risk Tolerance Equity Market type on /retirement/getrisktoleranceequitymarket GET', (done) => {
+  it('Should list Recurring Charity Payments on /getrecurringcharitypayments/:yearsUntilCharityPaymentsStart/:lengthOfCharityPayments/:frequencyOfPayments/:valueOfSinglePayment/:currentBalance/:expectedReturn/:inflationAssumption GET', (done) => {
     chai.request(server)
-      .get('/api/retirement/getrisktoleranceequitymarket')
+      .get('/api/retirement/getrecurringcharitypayments/6/4/Monthly/1500/3000/.05/.02')
       .set({ Authorization: `Bearer ${token}` })
       .end((err, res) => {
         res.should.have.status(200);

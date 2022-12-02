@@ -5,8 +5,8 @@
 const Joi = require('joi');
 const { pmt } = require('financial');
 
-// Get Client Retirement Calculators Controller
-exports.getSingleCharityPayment = async function (req, res) {
+// Get Client Future Purchase Future Generation Controller
+exports.getFuturePurchaseFutureGeneration = async function (req, res) {
   try {
     // Validation
     const schema = Joi.object({

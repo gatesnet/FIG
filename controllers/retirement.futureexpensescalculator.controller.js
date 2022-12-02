@@ -5,13 +5,13 @@
 const Joi = require('joi');
 const { pv, pmt } = require('financial');
 
-// Get Client Retirement Calculators Controller
-exports.getRecurringCharityPayments = async function (req, res) {
+// Get Future Expenses Calculator Calculators Controller
+exports.getFutureExpensesCalculator = async function (req, res) {
   try {
     // Validation
     const schema = Joi.object({
-      yearsUntilCharityPaymentsStart: Joi.number().required(),
-      lengthOfCharityPayments: Joi.number().required(),
+      yearsUntilFutureExpensesCalculatorPaymentsStart: Joi.number().required(),
+      lengthOfFutureExpensesCalculatorPayments: Joi.number().required(),
       frequencyOfPayments: Joi.string().required(),
       freuencyOfContributionToPortfolio: Joi.string().required(),
       valueOfSinglePayment: Joi.number().required(),
@@ -27,8 +27,8 @@ exports.getRecurringCharityPayments = async function (req, res) {
       return;
     }
 
-    const yearsUntilCharityPaymentsStart = parseFloat(req.params.yearsUntilCharityPaymentsStart, 10);
-    const lengthOfCharityPayments = parseFloat(req.params.lengthOfCharityPayments, 10);
+    const yearsUntilFutureExpensesCalculatorPaymentsStart = parseFloat(req.params.yearsUntilFutureExpensesCalculatorPaymentsStart, 10);
+    const lengthOfFutureExpensesCalculatorPayments = parseFloat(req.params.lengthOfFutureExpensesCalculatorPayments, 10);
     const { frequencyOfPayments } = req.params;
     const { freuencyOfContributionToPortfolio } = req.params;
     const valueOfSinglePayment = parseFloat(req.params.valueOfSinglePayment, 10);
@@ -36,35 +36,34 @@ exports.getRecurringCharityPayments = async function (req, res) {
     // const expectedReturn = parseFloat(req.params.expectedReturn, 10);
     const inflationAssumption = parseFloat(req.params.inflationAssumption, 10)/100;
 
-    // let expectedRealReturn = 0;
-    let PVOfCharityRequirements = 0;
+    //let expectedRealReturn = 0;
+    let PVOfFutureExpensesCalculatorRequirements = 0;
     let requiredContribution = 0;
 
     // expectedRealReturn = (1 + expectedReturn) / (1 + inflationAssumption) - 1;
 
     //   monthly , Quarterly , SemiAnnual , Annual cal
     if (frequencyOfPayments.toUpperCase() === 'MONTHLY') {
-      PVOfCharityRequirements = pv(inflationAssumption / 12, lengthOfCharityPayments, valueOfSinglePayment, 0, 0);
+      PVOfFutureExpensesCalculatorRequirements = pv(inflationAssumption / 12, lengthOfFutureExpensesCalculatorPayments, valueOfSinglePayment, 0, 0);
     } else if (frequencyOfPayments.toUpperCase() === 'QUARTERLY') {
-      PVOfCharityRequirements = pv(inflationAssumption / 4, lengthOfCharityPayments, valueOfSinglePayment, 0, 0);
+      PVOfFutureExpensesCalculatorRequirements = pv(inflationAssumption / 4, lengthOfFutureExpensesCalculatorPayments, valueOfSinglePayment, 0, 0);
     } else if (frequencyOfPayments.toUpperCase() === 'SEMIANNUAL') {
-      PVOfCharityRequirements = pv(inflationAssumption / 2, lengthOfCharityPayments, valueOfSinglePayment, 0, 0);
+      PVOfFutureExpensesCalculatorRequirements = pv(inflationAssumption / 2, lengthOfFutureExpensesCalculatorPayments, valueOfSinglePayment, 0, 0);
     } else if (frequencyOfPayments.toUpperCase() === 'ANNUAL') {
-      PVOfCharityRequirements = pv(inflationAssumption, lengthOfCharityPayments, valueOfSinglePayment, 0, 0);
+      PVOfFutureExpensesCalculatorRequirements = pv(inflationAssumption, lengthOfFutureExpensesCalculatorPayments, valueOfSinglePayment, 0, 0);
     }
 
     if (freuencyOfContributionToPortfolio.toUpperCase() === 'MONTHLY') {
-      requiredContribution = pmt(inflationAssumption / 12, yearsUntilCharityPaymentsStart * 12, currentBalance, PVOfCharityRequirements, 0);
+      requiredContribution = pmt(inflationAssumption / 12, yearsUntilFutureExpensesCalculatorPaymentsStart * 12, currentBalance, PVOfFutureExpensesCalculatorRequirements, 0);
     } else if (freuencyOfContributionToPortfolio.toUpperCase() === 'QUARTERLY') {
-      requiredContribution = pmt(inflationAssumption / 4, yearsUntilCharityPaymentsStart * 4, currentBalance, PVOfCharityRequirements, 0);
+      requiredContribution = pmt(inflationAssumption / 4, yearsUntilFutureExpensesCalculatorPaymentsStart * 4, currentBalance, PVOfFutureExpensesCalculatorRequirements, 0);
     } else if (freuencyOfContributionToPortfolio.toUpperCase() === 'SEMIANNUAL') {
-      requiredContribution = pmt(inflationAssumption / 2, yearsUntilCharityPaymentsStart * 2, currentBalance, PVOfCharityRequirements, 0);
+      requiredContribution = pmt(inflationAssumption / 2, yearsUntilFutureExpensesCalculatorPaymentsStart * 2, currentBalance, PVOfFutureExpensesCalculatorRequirements, 0);
     } else if (freuencyOfContributionToPortfolio.toUpperCase() === 'ANNUAL') {
-      requiredContribution = pmt(inflationAssumption, yearsUntilCharityPaymentsStart, currentBalance, PVOfCharityRequirements, 0);
+      requiredContribution = pmt(inflationAssumption, yearsUntilFutureExpensesCalculatorPaymentsStart, currentBalance, PVOfFutureExpensesCalculatorRequirements, 0);
     }
-
     // eslint-disable-next-line no-undef
-    // requiredMonthlyContribution = pmt(inflationAssumption / 12, yearsUntilCharityPaymentsStart * 12, currentBalance, PVOfCharityRequirements, 0);
+    //requiredMonthlyContribution = pmt(expectedRealReturn / 12, yearsUntilCharityPaymentsStart * 12, currentBalance, PVOfCharityRequirements, 0);
 
     return res.status(200).send({ requiredContribution });
   } catch (err) {

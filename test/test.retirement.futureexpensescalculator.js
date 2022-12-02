@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 
 let token;
 
-describe('Test Risk Tolerance Equity Market API', () => {
+describe('Test Future Expenses Calculator API', () => {
   it('Should Test User login and get Token ID on /user/login POST', (done) => {
     chai.request(server)
       .post('/api/user/login')
@@ -24,9 +24,9 @@ describe('Test Risk Tolerance Equity Market API', () => {
       });
   });
 
-  it('Should list ALL Risk Tolerance Equity Market type on /retirement/getrisktoleranceequitymarket GET', (done) => {
+  it('Should list Edcucation on /getfutureexpensescalculator/:yearsUntilFutureExpensesCalculatorPaymentsStart/:lengthOfFutureExpensesCalculatorPayments/:frequencyOfPayments/:valueOfSinglePayment/:currentBalance/:inflationAssumption/:freuencyOfContributionToPortfolio GET', (done) => {
     chai.request(server)
-      .get('/api/retirement/getrisktoleranceequitymarket')
+      .get('/api/retirement/getfutureexpensescalculator/3/5/monthly/1000/3000/5/monthly')
       .set({ Authorization: `Bearer ${token}` })
       .end((err, res) => {
         res.should.have.status(200);

@@ -1,29 +1,29 @@
 /* eslint-disable max-len */
 const express = require('express');
 
-const retirementEducationController = require('../controllers/retirement.education.controller');
+const retirementFutureExpensesCalculatorController = require('../controllers/retirement.futureexpensescalculator.controller');
 const checkAuthMiddleware = require('../middleware/check-auth');
 
 const router = express.Router();
 
 /**
  * @swagger
- * /retirement/geteducation/{yearsUntilEducationPaymentsStart}/{lengthOfEducationPayments}/{frequencyOfPayments}/{valueOfSinglePayment}/{currentBalance}/{inflationAssumption}/{freuencyOfContributionToPortfolio}:
+ * /retirement/getfutureexpensescalculator/{yearsUntilFutureExpensesCalculatorPaymentsStart}/{lengthOfFutureExpensesCalculatorPayments}/{frequencyOfPayments}/{valueOfSinglePayment}/{currentBalance}/{inflationAssumption}/{freuencyOfContributionToPortfolio}:
  *    get:
- *      description: Used to get Education
- *      summary: Get Required Education
+ *      description: Used to get Future Expenses Calculator
+ *      summary: Get Required Future Expenses Calculator
  *      security:
  *        - bearerAuth: []
  *      tags: [Retirement]
  *      parameters:
  *        - in: path
- *          name: yearsUntilEducationPaymentsStart
+ *          name: yearsUntilFutureExpensesCalculatorPaymentsStart
  *          required: false
  *          explode: false
  *          schema:
  *            type: float
  *        - in: path
- *          name: lengthOfEducationPayments
+ *          name: lengthOfFutureExpensesCalculatorPayments
  *          required: false
  *          explode: false
  *          schema:
@@ -60,7 +60,7 @@ const router = express.Router();
  *            type: string 
  *      responses:
  *          '200':
- *              description: Get Education successful
+ *              description: Get Future Expenses Calculator successful
  *              content:
  *                application/json:
  *                  schema:
@@ -81,9 +81,9 @@ const router = express.Router();
  */
 
 router.get(
-  '/geteducation/:yearsUntilEducationPaymentsStart/:lengthOfEducationPayments/:frequencyOfPayments/:valueOfSinglePayment/:currentBalance/:inflationAssumption/:freuencyOfContributionToPortfolio',
+  '/getfutureexpensescalculator/:yearsUntilFutureExpensesCalculatorPaymentsStart/:lengthOfFutureExpensesCalculatorPayments/:frequencyOfPayments/:valueOfSinglePayment/:currentBalance/:inflationAssumption/:freuencyOfContributionToPortfolio',
   checkAuthMiddleware.checkAuth,
-  retirementEducationController.getEducation,
+  retirementFutureExpensesCalculatorController.getFutureExpensesCalculator,
 );
 
 module.exports = router;

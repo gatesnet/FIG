@@ -8,7 +8,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /retirement/getrecurringcharitypayments/{yearsUntilCharityPaymentsStart}/{lengthOfCharityPayments}/{frequencyOfPayments}/{valueOfSinglePayment}/{currentBalance}/{expectedReturn}/{inflationAssumption}:
+ * /retirement/getrecurringcharitypayments/{yearsUntilCharityPaymentsStart}/{lengthOfCharityPayments}/{frequencyOfPayments}/{valueOfSinglePayment}/{currentBalance}/{inflationAssumption}/{freuencyOfContributionToPortfolio}:
  *    get:
  *      description: Used to get Recurring Charity Payments
  *      summary: Get Required Recurring Charity Payments
@@ -47,17 +47,17 @@ const router = express.Router();
  *          schema:
  *            type: float
  *        - in: path
- *          name: expectedReturn
- *          required: false
- *          explode: false
- *          schema:
- *            type: float
- *        - in: path
  *          name: inflationAssumption
  *          required: false
  *          explode: false
  *          schema:
  *            type: float
+ *        - in: path
+ *          name: freuencyOfContributionToPortfolio
+ *          required: false
+ *          explode: false
+ *          schema:
+ *            type: string 
  *      responses:
  *          '200':
  *              description: Get Recurring Charity Payments successful
@@ -81,7 +81,7 @@ const router = express.Router();
  */
 
 router.get(
-  '/getrecurringcharitypayments/:yearsUntilCharityPaymentsStart/:lengthOfCharityPayments/:frequencyOfPayments/:valueOfSinglePayment/:currentBalance/:expectedReturn/:inflationAssumption',
+  '/getrecurringcharitypayments/:yearsUntilCharityPaymentsStart/:lengthOfCharityPayments/:frequencyOfPayments/:valueOfSinglePayment/:currentBalance/:inflationAssumption/:freuencyOfContributionToPortfolio',
   checkAuthMiddleware.checkAuth,
   retirementRecurringCharityPaymentsController.getRecurringCharityPayments,
 );

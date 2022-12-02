@@ -8,7 +8,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /retirement/geteducation/{yearsUntilEducationPaymentsStart}/{lengthOfEducationPayments}/{frequencyOfPayments}/{valueOfSinglePayment}/{currentBalance}/{inflationAssumption}/{freuencyOfContributionToPortfolio}:
+ * /retirement/geteducation/{childAge}/{yearsUntilCharityPaymentsStart}/{lengthOfCharityPayments}/{frequencyOfPayments}/{valueOfSinglePayment}/{currentBalance}/{expectedReturn}/{inflationAssumption}:
  *    get:
  *      description: Used to get Education
  *      summary: Get Required Education
@@ -17,13 +17,19 @@ const router = express.Router();
  *      tags: [Retirement]
  *      parameters:
  *        - in: path
- *          name: yearsUntilEducationPaymentsStart
+ *          name: childage
  *          required: false
  *          explode: false
  *          schema:
  *            type: float
  *        - in: path
- *          name: lengthOfEducationPayments
+ *          name: yearsUntilCharityPaymentsStart
+ *          required: false
+ *          explode: false
+ *          schema:
+ *            type: float
+ *        - in: path
+ *          name: lengthOfCharityPayments
  *          required: false
  *          explode: false
  *          schema:
@@ -47,17 +53,17 @@ const router = express.Router();
  *          schema:
  *            type: float
  *        - in: path
- *          name: inflationAssumption
+ *          name: expectedReturn
  *          required: false
  *          explode: false
  *          schema:
  *            type: float
  *        - in: path
- *          name: freuencyOfContributionToPortfolio
+ *          name: inflationAssumption
  *          required: false
  *          explode: false
  *          schema:
- *            type: string 
+ *            type: float
  *      responses:
  *          '200':
  *              description: Get Education successful
@@ -81,7 +87,7 @@ const router = express.Router();
  */
 
 router.get(
-  '/geteducation/:yearsUntilEducationPaymentsStart/:lengthOfEducationPayments/:frequencyOfPayments/:valueOfSinglePayment/:currentBalance/:inflationAssumption/:freuencyOfContributionToPortfolio',
+  '/geteducation/:childAge/:yearsUntilCharityPaymentsStart/:lengthOfCharityPayments/:frequencyOfPayments/:valueOfSinglePayment/:currentBalance/:expectedReturn/:inflationAssumption',
   checkAuthMiddleware.checkAuth,
   retirementEducationController.getEducation,
 );

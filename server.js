@@ -195,7 +195,7 @@ const retirementEducationRoute = require('./routes/retirement.education.route');
 app.use('/api/retirement', retirementEducationRoute);
 
 // Routes  Single Charity Payment
-const retirementSingleCharityPaymentRoute = require('./routes/retirement.submitquestionnaire.route');
+const retirementSingleCharityPaymentRoute = require('./routes/retirement.singlecharitypayment.route');
 
 app.use('/api/retirement', retirementSingleCharityPaymentRoute);
 
@@ -208,6 +208,26 @@ app.use('/api/retirement', retirementFutureEventsRoute);
 const retirementFutureExpenses2Route = require('./routes/retirement.futureexpenses2.route');
 
 app.use('/api/retirement', retirementFutureExpenses2Route);
+
+// Routes Future Expenses Calculator
+const retirementFutureExpensesCalculatorRoute = require('./routes/retirement.futureexpensescalculator.route');
+
+app.use('/api/retirement', retirementFutureExpensesCalculatorRoute);
+
+// Routes Future Purchase Lifestyle
+const retirementFuturePurchaseLifeStyleRoute = require('./routes/retirement.futurepurchaselifestyle.route');
+
+app.use('/api/retirement', retirementFuturePurchaseLifeStyleRoute);
+
+// Routes Future Purchase Future Generation
+const retirementFuturePurchaseFutureGenerationRoute = require('./routes/retirement.futurepurchasefuturegeneration.route');
+
+app.use('/api/retirement', retirementFuturePurchaseFutureGenerationRoute);
+
+// Routes Retirement
+const retirementRetirementRoute = require('./routes/retirement.retirement.route');
+
+app.use('/api/retirement', retirementRetirementRoute);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

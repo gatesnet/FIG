@@ -10,8 +10,8 @@ const router = express.Router();
  * @swagger
  * /retirement/getfutureevents/{yearsUntilEvent}/{eventCost}/{currentBalance}/{expectedNominalReturn}/{inflationAssumption}:
  *    get:
- *      description: Used to get Recurring Charity Payments
- *      summary: Get Required Recurring Charity Payments
+ *      description: Used to get future events
+ *      summary: Get Required future events
  *      security:
  *        - bearerAuth: []
  *      tags: [Retirement]

@@ -14,8 +14,8 @@ describe('Test Recurring Charity Payments API', () => {
     chai.request(server)
       .post('/api/user/login')
       .send({
-        email: 'gatesnet@gmail.com',
-        password: 'Amman@123',
+        email: 'api@figinvestment.com',
+        password: 'FIG@^*135_0987',
       })
       .end((err, res) => {
         token = res.body.token;
@@ -24,9 +24,9 @@ describe('Test Recurring Charity Payments API', () => {
       });
   });
 
-  it('Should list Recurring Charity Payments on /getrecurringcharitypayments/:yearsUntilCharityPaymentsStart/:lengthOfCharityPayments/:frequencyOfPayments/:valueOfSinglePayment/:currentBalance/:expectedReturn/:inflationAssumption GET', (done) => {
+  it('Should list Recurring Charity Payments on /getrecurringcharitypayments/:yearsUntilCharityPaymentsStart/:lengthOfCharityPayments/:frequencyOfPayments/:valueOfSinglePayment/:currentBalance//:inflationAssumption/:freuencyOfContributionToPortfolio GET', (done) => {
     chai.request(server)
-      .get('/api/retirement/getrecurringcharitypayments/6/4/Monthly/1500/3000/.05/.02')
+      .get('/api/retirement/getrecurringcharitypayments/3/5/monthly/1000/3000/5/annual')
       .set({ Authorization: `Bearer ${token}` })
       .end((err, res) => {
         res.should.have.status(200);
