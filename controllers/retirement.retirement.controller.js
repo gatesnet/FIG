@@ -68,13 +68,13 @@ exports.getRetirement = async function (req, res) {
 
 
     if (freuencyOfContributionToPortfolio.toUpperCase() === 'MONTHLY') {
-      requiredContribution = pmt(inflationAssumption / 12, yearsUntilRetirementPaymentsStart * 12, currentBalance, PVOfRetirementRequirements, 0) * -1;
+      requiredContribution = pmt(inflationAssumption / 12, yearsUntilRetirementPaymentsStart * 12, currentBalance, PVOfRetirementRequirements, 0);
     } else if (freuencyOfContributionToPortfolio.toUpperCase() === 'QUARTERLY') {
-      requiredContribution = pmt(inflationAssumption / 4, yearsUntilRetirementPaymentsStart * 4, currentBalance, PVOfRetirementRequirements, 0) * -1;
+      requiredContribution = pmt(inflationAssumption / 4, yearsUntilRetirementPaymentsStart * 4, currentBalance, PVOfRetirementRequirements, 0);
     } else if (freuencyOfContributionToPortfolio.toUpperCase() === 'SEMIANNUAL') {
-      requiredContribution = pmt(inflationAssumption / 2, yearsUntilRetirementPaymentsStart * 2, currentBalance, PVOfRetirementRequirements, 0) * -1;
+      requiredContribution = pmt(inflationAssumption / 2, yearsUntilRetirementPaymentsStart * 2, currentBalance, PVOfRetirementRequirements, 0);
     } else if (freuencyOfContributionToPortfolio.toUpperCase() === 'ANNUAL') {
-      requiredContribution = pmt(inflationAssumption, yearsUntilRetirementPaymentsStart, currentBalance, PVOfRetirementRequirements, 0) * -1;
+      requiredContribution = pmt(inflationAssumption, yearsUntilRetirementPaymentsStart, currentBalance, PVOfRetirementRequirements, 0);
     }
 
     // eslint-disable-next-line no-undef

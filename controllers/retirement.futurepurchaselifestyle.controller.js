@@ -37,13 +37,13 @@ exports.getFuturePurchaseLifeStyle = async function (req, res) {
     // expectedRealReturn = (1 + expectedNominalReturn) / (1 + inflationAssumption) - 1;
 
     if (freuencyOfContributionToPortfolio.toUpperCase() === 'MONTHLY') {
-      requiredContribution = pmt(inflationAssumption / 12, yearsUntilDonation * 12, -1 * currentBalance, desiredDonationAmount, 0);
+      requiredContribution = pmt(inflationAssumption / 12, yearsUntilDonation * 12, -1 * currentBalance, desiredDonationAmount, 0) * -1;
     } else if (freuencyOfContributionToPortfolio.toUpperCase() === 'QUARTERLY') {
-      requiredContribution = pmt(inflationAssumption / 4, yearsUntilDonation * 4, -1 * currentBalance, desiredDonationAmount, 0);
+      requiredContribution = pmt(inflationAssumption / 4, yearsUntilDonation * 4, -1 * currentBalance, desiredDonationAmount, 0) * -1;
     } else if (freuencyOfContributionToPortfolio.toUpperCase() === 'SEMIANNUAL') {
-      requiredContribution = pmt(inflationAssumption / 2, yearsUntilDonation * 2, -1 * currentBalance, desiredDonationAmount, 0);
+      requiredContribution = pmt(inflationAssumption / 2, yearsUntilDonation * 2, -1 * currentBalance, desiredDonationAmount, 0) * -1;
     } else if (freuencyOfContributionToPortfolio.toUpperCase() === 'ANNUAL') {
-      requiredContribution = pmt(inflationAssumption, yearsUntilDonation, -1 * currentBalance, desiredDonationAmount, 0);
+      requiredContribution = pmt(inflationAssumption, yearsUntilDonation, -1 * currentBalance, desiredDonationAmount, 0) * -1;
     }
     // eslint-disable-next-line no-undef
     //requiredContribution = pmt(expectedRealReturn / 12, yearsUntilDonation * 12, -1 * currentBalance, desiredDonationAmount, 0);
